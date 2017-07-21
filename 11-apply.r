@@ -50,8 +50,6 @@ rowSums(m)
 # Anwendungsbeispiel apply: Array
 # Wirtschaftsdaten mehrerer Länder, Jahre, und Sektoren
 load("Daten/11_econ.Rdata") # fiktive Daten aus Dominik Reusser's R-Kurs 2011
-# falls bisher nicht runtergeladen:
-load(url("http://dl.dropbox.com/u/4836866/Rclick/Daten/11_econ.Rdata"))
 # Siehe Kap. 10.3
 ls()
 econ
