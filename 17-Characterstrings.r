@@ -58,7 +58,7 @@ mtext(expression(paste("Temp [",degree,"C]")), adj=0)
 mtext("2 * 2\U00B2 = 2 \U00B3", col=2, adj=1)
 browseURL("http://unicode-table.com/de/")
 
-# control characters \a, \b, \f, \n, \r, \t, \v 
+# control characters \a, \b, \f, \n, \r, \t, \v               see ?regex
 # octal and hexadecimal representations like \040 and \0x2A
 
 num <- c(3.2, 12.03, 789)
