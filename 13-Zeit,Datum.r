@@ -214,16 +214,17 @@ tapply(ourdata$Wert, as.POSIXct(times), FUN=sum, na.rm=T)
 
 
 # 13.5 Hydrologisches Jahr -----------------------------------------------------
-# Effizientes Programmieren ist bei langen Zeitreihen wichtig !
-# Nur einmal die StringParsedTimes erstellen, und dann davon jeweils Formate
-# verwenden, zB beim Ermitteln der Jahresmaxima. (zr und fd aus 13.4)
-# Anfang hydrologisches Jahr in Deutchlands Klima:
-hyja <- which( format(zr,"%d.%m %H:%M") =="01.11 01:00")
-Max <- sapply(1:(length(hyja)-1),
-             function(i) max(fd[ hyja[i]:(hyja[i+1]-1) ], na.rm=T))
-# auch hier auf vorhandene zr zur?ckgreifen, und nur die gewollten ausw?hlen
-Erg <- data.frame(HydroJahr=format(zr[hyja[1:length(Max)]],"%Y"), Max)
-Erg
+# Anfang hydrologisches Jahr in Deutschlands Klima: 1. November
+zr <- strptime(c("05.08.2010 12:15", "09.02.2013 14:45"), "%d.%m.%Y %H:%M")
+zr <- seq(zr[1], zr[2], by=60*60) # Sequenz in Stunden-Schritten
+set.seed(007)
+fd <- cumsum(rnorm(length(zr))) # fake data aus Random Walk
+plot(zr, fd, type="l", las=1)
+berryFunctions::monthAxis()
+abline(v=as.POSIXct(as.Date(paste0(2010:2013,"-11-01"))), col=2)
+abline(v=as.POSIXct(as.Date(paste0(2010:2013,"-01-01"))), col=4)
+tapply(fd, format(zr+61*24*60*60, "%Y"), max) # +61 if Date format!
+
 
 
 

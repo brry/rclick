@@ -102,6 +102,10 @@ grepl("t", "D:/A_Data") # liefert TRUE, wie erwartet.
 # an welchen Stellen einer Zeichenkette ist ein bestimmter Buchstabe:
 unlist(gregexpr("e", Kette))
 
+# Regular expressions
+words <- c("ab(","abc (", "abcd(", "abc.(", "abc", "abc(th)", "abc (th)")
+grep("abc\\(", words, value=TRUE)
+grep("abc\\(|bcd\\(", words, value=TRUE)
 
 
 # 17.3 Anwendungen Suchen und ersetzen -----------------------------------------
